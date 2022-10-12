@@ -1,0 +1,497 @@
+---
+title: "Mini Data-Analysis Deliverable 1"
+output: github_document
+toc: TRUE 
+toc_float: TRUE
+---
+
+# Welcome to your (maybe) first-ever data analysis project!
+
+And hopefully the first of many. Let's get started:
+
+1.  Install the [`datateachr`](https://github.com/UBC-MDS/datateachr) package by typing the following into your **R terminal**:
+
+<!-- -->
+
+    install.packages("devtools")
+    devtools::install_github("UBC-MDS/datateachr")
+
+2.  Load the packages below.
+
+```{r}
+library(datateachr)
+library(tidyverse)
+```
+
+3.  Make a repository in the <https://github.com/stat545ubc-2022> Organization. You will be working with this repository for the entire data analysis project. You can either make it public, or make it private and add the TA's and Lucy as collaborators.
+
+# Instructions
+
+## For Both Milestones
+
+-   Each milestone is worth 45 points. The number of points allocated to each task will be annotated within each deliverable. Tasks that are more challenging will often be allocated more points.
+
+-   10 points will be allocated to the reproducibility, cleanliness, and coherence of the overall analysis. While the two milestones will be submitted as independent deliverables, the analysis itself is a continuum - think of it as two chapters to a story. Each chapter, or in this case, portion of your analysis, should be easily followed through by someone unfamiliar with the content. [Here](https://swcarpentry.github.io/r-novice-inflammation/06-best-practices-R/) is a good resource for what constitutes "good code". Learning good coding practices early in your career will save you hassle later on!
+
+## For Milestone 1
+
+**To complete this milestone**, edit [this very `.Rmd` file](https://raw.githubusercontent.com/UBC-STAT/stat545.stat.ubc.ca/master/content/mini-project/mini-project-1.Rmd) directly. Fill in the sections that are tagged with `<!--- start your work below --->`.
+
+**To submit this milestone**, make sure to knit this `.Rmd` file to an `.md` file by changing the YAML output settings from `output: html_document` to `output: github_document`. Commit and push all of your work to the mini-analysis GitHub repository you made earlier, and tag a release on GitHub. Then, submit a link to your tagged release on canvas.
+
+**Points**: This milestone is worth 45 points: 43 for your analysis, 1 point for having your Milestone 1 document knit error-free, and 1 point for tagging your release on Github.
+
+# Learning Objectives
+
+By the end of this milestone, you should:
+
+-   Become familiar with your dataset of choosing
+-   Select 4 questions that you would like to answer with your data
+-   Generate a reproducible and clear report using R Markdown
+-   Become familiar with manipulating and summarizing your data in tibbles using `dplyr`, with a research question in mind.
+
+# Task 1: Choose your favorite dataset (10 points)
+
+The `datateachr` package by Hayley Boyce and Jordan Bourak currently composed of 7 semi-tidy datasets for educational purposes. Here is a brief description of each dataset:
+
+-   *apt_buildings*: Acquired courtesy of The City of Toronto's Open Data Portal. It currently has 3455 rows and 37 columns.
+
+-   *building_permits*: Acquired courtesy of The City of Vancouver's Open Data Portal. It currently has 20680 rows and 14 columns.
+
+-   *cancer_sample*: Acquired courtesy of UCI Machine Learning Repository. It currently has 569 rows and 32 columns.
+
+-   *flow_sample*: Acquired courtesy of The Government of Canada's Historical Hydrometric Database. It currently has 218 rows and 7 columns.
+
+-   *parking_meters*: Acquired courtesy of The City of Vancouver's Open Data Portal. It currently has 10032 rows and 22 columns.
+
+-   *steam_games*: Acquired courtesy of Kaggle. It currently has 40833 rows and 21 columns.
+
+-   *vancouver_trees*: Acquired courtesy of The City of Vancouver's Open Data Portal. It currently has 146611 rows and 20 columns.
+
+**Things to keep in mind**
+
+-   We hope that this project will serve as practice for carrying our your own *independent* data analysis. Remember to comment your code, be explicit about what you are doing, and write notes in this markdown document when you feel that context is required. As you advance in the project, prompts and hints to do this will be diminished - it'll be up to you!
+
+-   Before choosing a dataset, you should always keep in mind **your goal**, or in other ways, *what you wish to achieve with this data*. This mini data-analysis project focuses on *data wrangling*, *tidying*, and *visualization*. In short, it's a way for you to get your feet wet with exploring data on your own.
+
+And that is exactly the first thing that you will do!
+
+1.1 Out of the 7 datasets available in the `datateachr` package, choose **4** that appeal to you based on their description. Write your choices below:
+
+**Note**: We encourage you to use the ones in the `datateachr` package, but if you have a dataset that you'd really like to use, you can include it here. But, please check with a member of the teaching team to see whether the dataset is of appropriate complexity. Also, include a **brief** description of the dataset here to help the teaching team understand your data.
+
+<!-------------------------- Start your work below ---------------------------->
+
+## Choosing 4 Datasets 
+
+1: cancer_sample
+
+2: vancouver_trees
+
+3: steam_games
+
+4: apt_buildings
+
+<!----------------------------------------------------------------------------->
+
+1.2 One way to narrowing down your selection is to *explore* the datasets. Use your knowledge of dplyr to find out at least *3* attributes about each of these datasets (an attribute is something such as number of rows, variables, class type...). The goal here is to have an idea of *what the data looks like*.
+
+*Hint:* This is one of those times when you should think about the cleanliness of your analysis. I added a single code chunk for you below, but do you want to use more than one? Would you like to write more comments outside of the code chunk?
+
+<!-------------------------- Start your work below ---------------------------->
+## Exploration of 4 datasets
+
+**In the following code blocks I will explore the cancer_sample, vancouver_trees, steam_games and apt_buildings datasets. I will use the head(), class() and glimpse() functions to obtain preliminary information on these datasets.**
+
+1. The following codeblock contains the preliminary exploration of the cancer_sample dataset:
+```{r}
+# view first 6 rows of dataset with head function
+head(cancer_sample)
+
+# view class type of dataset
+class(cancer_sample)
+
+# view an overview of rows and columns, and see all variables and first few data entries 
+glimpse(cancer_sample)
+```
+
+
+
+
+2. The following codeblock contains the preliminary exploration of the vancouver_trees dataset:
+```{r}
+head(vancouver_trees)
+class(vancouver_trees)
+glimpse(vancouver_trees)
+```
+
+
+
+
+3. The following codeblock contains the preliminary exploration of the steam_games dataset:
+```{r}
+head(steam_games)
+class(steam_games)
+glimpse(steam_games)
+```
+
+
+
+
+4. The following codeblock contains the preliminary exploration of the apt_buildings dataset:
+```{r}
+head(apt_buildings)
+class(apt_buildings)
+glimpse(apt_buildings)
+```
+
+<!----------------------------------------------------------------------------->
+
+1.3 Now that you've explored the 4 datasets that you were initially most interested in, let's narrow it down to 2. What lead you to choose these 2? Briefly explain your choices below, and feel free to include any code in your explanation.
+
+<!-------------------------- Start your work below ---------------------------->
+## Two interesting datasets:
+
+**vancouver_trees**
+The first dataset I am interested in working with is the vancouver_trees dataset. I like plants, and am interested in analyzing if there is a relationship between neighborhood and size of tree. Both of these variables are included in the dataset, as confirmed by use of the glimpse() function. Additionally this dataset is already in tibble format, making it easier to work with. I ascertained this information by using the class() function. This sample also has 146,611 rows, so a very large sample size, which makes it better for ensuring an accurate analysis with interpretable and generalizable results.
+
+**apt_buildings**
+The second dataset I am interested in working with is the apt_buildings dataset.I am interested in analyzing if there is a relationship between the year the apartment is built in and the number of accessibility features it has. This dataset is also a tibble (found by using class()), making it easier to work with. Using the glipsme() function I found that there are several different accessibility variables included in the dataset to analyze, making the analysis more robust.
+
+<!----------------------------------------------------------------------------->
+
+1.4 Time for the final decision! Going back to the beginning, it's important to have an *end goal* in mind. For example, if I had chosen the `titanic` dataset for my project, I might've wanted to explore the relationship between survival and other variables. Try to think of 1 research question that you would want to answer with each dataset. Note them down below, and make your final choice based on what seems more interesting to you!
+
+<!-------------------------- Start your work below ---------------------------->
+
+## Final dataset descision
+
+**vancouver_trees**
+I am most interested in working with the vancouver_trees dataset. I like plants, and am interested to analyze if there is a relationship between neighborhood and size of trees. Then I can go walk around and check them out when I'm done this project!
+
+<!----------------------------------------------------------------------------->
+
+# Important note
+
+Read Tasks 2 and 3 *fully* before starting to complete either of them. Probably also a good point to grab a coffee to get ready for the fun part!
+
+This project is semi-guided, but meant to be *independent*. For this reason, you will complete tasks 2 and 3 below (under the **START HERE** mark) as if you were writing your own exploratory data analysis report, and this guidance never existed! Feel free to add a brief introduction section to your project, format the document with markdown syntax as you deem appropriate, and structure the analysis as you deem appropriate. Remember, marks will be awarded for completion of the 4 tasks, but 10 points of the whole project are allocated to a reproducible and clean analysis. If you feel lost, you can find a sample data analysis [here](https://www.kaggle.com/headsortails/tidy-titarnic) to have a better idea. However, bear in mind that it is **just an example** and you will not be required to have that level of complexity in your project.
+
+# Task 2: Exploring your dataset (15 points)
+
+If we rewind and go back to the learning objectives, you'll see that by the end of this deliverable, you should have formulated *4* research questions about your data that you may want to answer during your project. However, it may be handy to do some more exploration on your dataset of choice before creating these questions - by looking at the data, you may get more ideas. **Before you start this task, read all instructions carefully until you reach START HERE under Task 3**.
+
+2.1 Complete *4 out of the following 8 exercises* to dive deeper into your data. All datasets are different and therefore, not all of these tasks may make sense for your data - which is why you should only answer *4*. Use *dplyr* and *ggplot*.
+
+1.  Plot the distribution of a numeric variable.
+2.  Create a new variable based on other variables in your data (only if it makes sense)
+3.  Investigate how many missing values there are per variable. Can you find a way to plot this?
+4.  Explore the relationship between 2 variables in a plot.
+5.  Filter observations in your data according to your own criteria. Think of what you'd like to explore - again, if this was the `titanic` dataset, I may want to narrow my search down to passengers born in a particular year...
+6.  Use a boxplot to look at the frequency of different observations within a single variable. You can do this for more than one variable if you wish!
+7.  Make a new tibble with a subset of your data, with variables and observations that you are interested in exploring.
+8.  Use a density plot to explore any of your variables (that are suitable for this type of plot).
+
+2.2 For each of the 4 exercises that you complete, provide a *brief explanation* of why you chose that exercise in relation to your data (in other words, why does it make sense to do that?), and sufficient comments for a reader to understand your reasoning and code.
+
+<!-------------------------- Start your work below ---------------------------->
+
+## 4 Exercises to Diver Deeper Into the vancouver_trees Dataset 
+
+1. **Create a new variable based on other variables in your data (only if it makes sense)**
+
+    In this codeblock I create a new variable within the vancouver_trees tibble to represent the year in which the tree was planted:
+```{r}
+vancouver_trees <- mutate(vancouver_trees, year = format(date_planted, format = "%Y"))
+glimpse(vancouver_trees)
+```
+
+2. **Investigate how many missing values there are per variable, and plot it + make a new tibble with a subset of your data, with variables and observations that you are interested in exploring**
+
+    In this code block I examine how many missing values there are per variable:
+```{r}
+# To avoid code redundancy, I use a for loop and iterate over the columns in vancouver_trees, and calculate the sum of the null values in each column. I then put these values in a vector so we can work with them later:
+vancouver_trees_null_values <- numeric()
+vancouver_trees_replicate <- vancouver_trees
+for(i in colnames(vancouver_trees_replicate)) {
+  vancouver_trees_null_values<- c(vancouver_trees_null_values, sum(is.na(vancouver_trees[[i]])))
+}
+
+# View new vector of the number of NA values in each column: 
+vancouver_trees_null_values
+
+# I then want to create a new tibble in which the column names are connected to the number of NA values in each column. I make a vector of the columns names, and then combine the two vectors in a data frame. I then convert that dataframe to a tibble: 
+vancouver_trees_column_names = c(colnames(vancouver_trees))
+vancouver_trees_column_NA_numbers <- data.frame(vancouver_trees_column_names, vancouver_trees_null_values)
+vancouver_trees_column_NA_numbers <- as_tibble(vancouver_trees_column_NA_numbers)
+
+# View new tibble class to verify tibble creation, and then view tibble itself:
+class(vancouver_trees_column_NA_numbers)
+vancouver_trees_column_NA_numbers
+
+# Create a plot to display the number of NA values per column:
+ggplot(vancouver_trees_column_NA_numbers, aes(vancouver_trees_column_names, vancouver_trees_null_values)) +
+  geom_col() +
+  coord_flip()
+```
+
+3. **Use a boxplot to look at the frequency of different observations within a single variable. Do this for several variables**
+
+    In this codeblock I create 3 boxplots to examine the distribution of the tree diameters across several different variables, including neighbourhood, if they were planted on the curb or not, and the year in which they were planted: 
+```{r}
+#plot of frequency of diameter in different neighbourhoods:
+ggplot(vancouver_trees, aes(neighbourhood_name, diameter)) +
+  geom_boxplot() +
+  coord_flip()
+
+#plot of frequency of diameter if planted on curb vrs. not planted on curb
+ggplot(vancouver_trees, aes(curb, diameter)) +
+  geom_boxplot() +
+  coord_flip()
+
+#plot of frequency of diameter as planted in different years 
+ggplot(vancouver_trees, aes(year, diameter)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+
+4. **Explore the relationship between 2 variables in a plot**
+
+    In this codeblock I create a plot of tree diameter and height, and further distinguish the datapoints by assigning colour to them based on the neighbourhood in which the tree was planted. This way I can see if a neighbourhood has more big trees than another neighbourhood!: 
+```{r}
+big_tree_plot <- vancouver_trees %>%
+  ggplot(aes(diameter, height_range_id, colour = neighbourhood_name)) +
+  geom_point() + 
+  theme(legend.key.size = unit(0.5, 'cm'),
+  legend.key.height = unit(0.5, 'cm'), 
+  legend.key.width = unit(0.5, 'cm'), 
+  legend.title = element_text(size=5), 
+  legend.text = element_text(size=5)) 
+
+
+print(big_tree_plot)
+```
+
+
+<!----------------------------------------------------------------------------->
+
+# Task 3: Write your research questions (5 points)
+
+
+So far, you have chosen a dataset and gotten familiar with it through exploring the data. Now it's time to figure out 4 research questions that you would like to answer with your data! Write the 4 questions and any additional comments at the end of this deliverable. These questions are not necessarily set in stone - TAs will review them and give you feedback; therefore, you may choose to pursue them as they are for the rest of the project, or make modifications!
+
+<!--- *****START HERE***** --->
+
+# Task 4: Process and summarize your data (13 points)
+
+From Task 2, you should have an idea of the basic structure of your dataset (e.g. number of rows and columns, class types, etc.). Here, we will start investigating your data more in-depth using various data manipulation functions.
+
+### 1.1 (10 points)
+
+Now, for each of your four research questions, choose one task from options 1-4 (summarizing), and one other task from 4-8 (graphing). You should have 2 tasks done for each research question (8 total). Make sure it makes sense to do them! (e.g. don't use a numerical variables for a task that needs a categorical variable.). Comment on why each task helps (or doesn't!) answer the corresponding research question.
+
+Ensure that the output of each operation is printed!
+
+**Summarizing:**
+
+1.  Compute the *range*, *mean*, and *two other summary statistics* of **one numerical variable** across the groups of **one categorical variable** from your data.
+2.  Compute the number of observations for at least one of your categorical variables. Do not use the function `table()`!
+3.  Create a categorical variable with 3 or more groups from an existing numerical variable. You can use this new variable in the other tasks! *An example: age in years into "child, teen, adult, senior".*
+4.  Based on two categorical variables, calculate two summary statistics of your choosing.
+
+**Graphing:**
+
+5.  Create a graph out of summarized variables that has at least two geom layers.
+6.  Create a graph of your choosing, make one of the axes logarithmic, and format the axes labels so that they are "pretty" or easier to read.
+7.  Make a graph where it makes sense to customize the alpha transparency.
+8.  Create 3 histograms out of summarized variables, with each histogram having different sized bins. Pick the "best" one and explain why it is the best.
+
+Make sure it's clear what research question you are doing each operation for!
+
+<!------------------------- Start your work below ----------------------------->
+
+## Research Questions
+
+1.    Which tree genuses are planted the most in Vancouver?
+2.    Which neighbourhood has the most big trees?
+3.    Do some places in the city have more trees than others?
+4.    What variables affect size of tree?
+
+
+## Data Analysis to Address Research Questions
+
+### Question 1: Which tree genuses are planted the most in Vancouver?
+
+**Task: Compute the number of observations for at least one of your categorical variables, and Create a graph of your choosing, make one of the axes logarithmic, and format the axes labels so that they are "pretty" or easier to read**
+    
+    In the following code block I compute the number of observations for the categorical variable 'genus_name'. I then create a bar chart to represent this data, with the count axis (y) being logarithmic and the genus name labels on the x axis being adjusted for better readability. These tasks have helped to illustrate how many trees of each genus have been planted, and the bar chart displays visually which genuses have been planted the most. 
+
+```{r}
+genus_count = count(vancouver_trees, genus_name)
+genus_count
+
+ggplot(genus_count, aes(genus_name, n)) +
+  geom_col() +
+  scale_y_log10("Number of planted trees in genus") +
+  theme(axis.text.x=element_text(angle = -90, hjust = 0, size = 3)) 
+```
+
+
+
+### Question 2: Which neighbourhood has the most big trees?
+
+**Task: Create a categorical variable with 3 or more groups from an existing numerical variable**
+
+    In the following code block I create a new tibble (tree_size_by_neighbourhood) that creates a new variable called tree size (which treats the tree as a cyclinder and calculates the area) and links that variable to the neighbourhood in which the tree was planted. I then created categories for the tree size variable and classified the trees based on what size they are - I effectively converted a numerical value to a categorical variable. This task helps to see what the size of trees are that are growing in each neighbourhood. This should help us find which neighbourhood then has the largest trees. 
+
+```{r}
+tree_size_by_neighbourhood<- vancouver_trees %>%
+  group_by(neighbourhood_name, diameter, height_range_id) %>%
+  summarise(tree_size = ((2 * 3.14 *(diameter/2)*height_range_id) + (2*3.14)*((diameter/2)**2)))
+
+tree_size_by_neighbourhood %>%
+  mutate(tree_size_categories = cut(tree_size, breaks = c(-Inf,60000,120000,180000,240000, Inf), labels = c("X-Small", "Small", "Medium", "Large", "X-Large")))
+```
+
+
+**Task: Create 3 histograms out of summarized variables, with each histogram having different sized bins. Pick the "best" one and explain why it is the best.**
+
+    + In the following code block I create three histograms from the tree_size variable. These plots are identical except for their bin size. The first plot has a bin size of 200, the second of 500 and the third of 1000. I created these histograms so we can first see how many of each tree size we have, before we try to figure out which neighbourhood has the most big trees. It's important to see how many 'big' trees we have in total, before we try to figure out which neighbourhoods they are in. Please note that there are so few trees with sizes above 20000 that they do not register on the histogram when the full range of tree size is plotted, so these outliers have been omitted in the interest of better seeing the size of the majority of trees included in the dataset. Out of the three histograms below, I think that the one with a bin size of 500 is most appropriate, because we can clearly see the tree size that correlates with each bin (unlike in the bin-200 histogram), but the bins are small enough to also clearly see the count of how many trees fall within the bin (unlike in the bin-1000 chart where things look a little blended). 
+```{r}
+# Note:to run some of this code you will need to have the ggpubr package installed 
+library(ggpubr)
+
+histo200 <- ggplot(tree_size_by_neighbourhood, aes(x = tree_size)) +
+  geom_histogram(binwidth= 200) +
+  scale_x_continuous(limits = c(0, 20000)) +
+  scale_y_log10()
+
+histo500 <- ggplot(tree_size_by_neighbourhood, aes(x = tree_size)) +
+  geom_histogram(binwidth= 500) +
+  scale_x_continuous(limits = c(0, 20000)) +
+  scale_y_log10()
+
+histo1000 <- ggplot(tree_size_by_neighbourhood, aes(x = tree_size)) +
+  geom_histogram(binwidth= 1000) +
+  scale_x_continuous(limits = c(0, 20000)) +
+  scale_y_log10()
+
+different_bin_histos <- ggarrange(histo200, histo500, histo1000)
+different_bin_histos
+```
+
+
+
+
+### Question 3: Do some places in the city have more trees than others?
+
+**Task: Based on two categorical variables, calculate two summary statistics of your choosing.**
+
+    In the following code block I have calculated the summary statistics of frequency count and proportion for the two categorical variables neighbourhood_name and street_side_name. These statistics help to identify if certain neighbourhoods or different types of street sides have had more trees planted than others within their categories.
+
+```{r}
+neighbourhood_name_summary_statistics <- vancouver_trees %>%
+  count(neighbourhood_name) %>%
+  mutate(neighbourhood_proportion = n / sum(n))
+
+neighbourhood_name_summary_statistics
+
+street_side_name_summary_statistics <- vancouver_trees %>%
+  count(street_side_name) %>%
+  mutate(street_side_name_proportion = n / sum(n))
+
+street_side_name_summary_statistics
+```
+
+
+**Task: Make a graph where it makes sense to customize the alpha transparency.**
+
+    In the following codeblock I create a plot of latitude and longitude that show the exact positions that trees have been planted in the city. I have colour coded the neighbourhoods for additional clarity, and have added an alpha-transparency layer (in a way that makes sense!) so we can see the size of the tree each point represents. This plot gives a beautiful visual representation of where the trees in the city are clustered, and allows us to visually compare them with areas where there are few trees to be found. 
+
+```{r}
+vancouver_trees %>%
+  mutate(tree_size = ((2 * 3.14 *(diameter/2)*height_range_id) + (2*3.14)*((diameter/2)**2))) %>%
+  ggplot(vancouver_trees, mapping = aes(latitude, longitude)) +
+   geom_point(size = 0.2, mapping = aes(colour = neighbourhood_name, alpha = tree_size)) +
+    theme(legend.key.size = unit(0.2, 'cm'),
+        legend.key.height = unit(0.2, 'cm'), 
+        legend.key.width = unit(0.2, 'cm'), 
+        legend.title = element_text(size=2), 
+        legend.text = element_text(size=2)) 
+```
+
+
+
+
+### Question 4: What variables affect size of tree?
+
+**Task: Compute the range, mean, and two other summary statistics of one numerical variable across the groups of one categorical variable from your data.**
+
+    In the following code block I add the tree_size variable to the vancouver_trees dataset, and then compute the summary statistics of mean, range, median and max for tree size across the two groups of the 'curb' variable. The resulting tibble helps to illustrate if there is a difference in these summary statistics between the two groups, and therefore if the curb variable might affect the size of the tree. 
+```{r}
+vancouver_trees_with_tree_size <- vancouver_trees %>%
+  mutate(tree_size = ((2 * 3.14 *(diameter/2)*height_range_id) + (2*3.14)*((diameter/2)**2))) %>%
+  group_by(curb) %>%
+  summarise(tree_size_mean = mean(tree_size, na.rm =TRUE), tree_size_range = range(tree_size, na.rm = TRUE), tree_size_median = median(tree_size, na.rm = TRUE), tree_size_max = max(tree_size))
+  
+vancouver_trees_with_tree_size
+```
+
+
+**Task: Use a boxplot to look at the frequency of different observations within a single variable. You can do this for more than one variable if you wish!**
+
+    In the following codeblock I create a boxplot to visually represent the summary statistics for tree size within curb groups calculated above. I also add another geom layer to display the mean values of each group. This plot helps to visually represent any differences in the summary statistics between the two groups, allowing us to visually see if tree size is affected by being planted near a curb. 
+```{r}
+vancouver_trees_with_tree_size_plot <- mutate(vancouver_trees, tree_size = ((2 * 3.14 *(diameter/2)*height_range_id) + (2*3.14)*((diameter/2)**2)))
+  
+tree_means <- aggregate(tree_size ~ curb, vancouver_trees_with_tree_size_plot, mean)
+
+vancouver_trees_with_tree_size_plot %>%
+  group_by(curb) %>%
+  ggplot(vancouver_trees_with_tree_size_plot, mapping = aes(x = factor(curb), tree_size)) +
+    geom_boxplot() +
+    scale_y_log10() +
+    geom_text(data = tree_means, aes(label = tree_size, y = tree_size - 200), size = 4)
+```
+
+
+
+<!----------------------------------------------------------------------------->
+
+### 1.2 (3 points)
+
+Based on the operations that you've completed, how much closer are you to answering your research questions? Think about what aspects of your research questions remain unclear. Can your research questions be refined, now that you've investigated your data a bit more? Which research questions are yielding interesting results?
+
+<!-------------------------- Start your work below ---------------------------->
+##Research Question Discussion - Answering, Refining, Clarifying etc.
+
+
+### For Question 1: Which tree genuses are planted the most in Vancouver?
+
+    This research question has been answered! The tree genus Acer has been planted the most in Vancouver - I'll have to go for a walk and look at all the beautiful maple fall colours after I'm done this project! It would be interesting to dive into this question a little deeper and perhaps analyze the percentages of overall trees planted each genus makes up, and if there are any differences in genus percentages planted per neighbourhood. I tend to think of the west coast as having more coniferous trees, so it is interesting that the most planted tree in Vancouver is a deciduous tree. 
+
+### For Question 2: Which neighbourhood has the most big trees?
+
+     Based on the operations completed for this research question, I am a little closer to answering this question. I have a categorized the trees by size, and have a good idea of the number of trees that might roughly fall into each size category. These operations have made the structure of the data more visible and understandable, and I am now ready to carry forward the observations from these tasks into the next step of seeing if there is a difference in tree size across neighbourhoods. 
+
+### For Question 3: Do some places in the city have more trees than others?
+
+    Based on the operations completed this question has been somewhat answered. Based on the frequency counts and percentages its clear that some neighbourhoods have more trees than others, with Kensington-Cedar Cottage and Hastings-Sunrise having the most planted. It is also clear that both even and odd sides of streets seem to have about the same number of trees, but both have FAR more trees than greenways or parks, which I thought was kind of an unexpected result. It would be interesting to dive further into this question and compare the total area and tree density between these different categories, to see if this effect is because there is simply much more street-side space for planting than there are parks or greenways. 
+
+    The plot made for this research question is a beautiful illustration of both variables analyzed in the above section, as you can see the coordinates for the trees form the street sides of the city and give almost a map of vancouver streets. We see relatively few greenways or parks in which tree density is spread in a cluster, as opposed to the lines of trees that make up street sides. We can also see that some neighbourhoods have more tree density than others, and show up more clearly on the 'map'. 
+
+
+### For Question 4: What variables affect size of tree?
+
+    The operations I completed for this research question specifically examine if being planted on a curb affects the size of the tree. I grouped the trees by whether or not they had been planted on curb and then calculated summary statistics for these groups , including their mean and range. I also created a boxplot to visually represent the same data for these two groups. There did not appear to be much difference in tree size between the groups, but it may be worth running a statistical analysis to determine if the small difference seen between them is statistically significant. I was suprised to not see a larger difference between these two groups, as I thought being planted near a curb would be a more stressful environment for the tree and result in it not growing as large as it would if it had more space. 
+
+    Ultimately these operations only examine the effect of one variable (curb) on tree size, and in order to answer this research question we would need to perform a similar analysis on other variables such as root barrier or area planted. 
+
+
+C'est Finis! For now...
+<!----------------------------------------------------------------------------->
+
+## Attribution
+
+Thanks to Icíar Fernández Boyano for mostly putting this together, and Vincenzo Coia for launching.
