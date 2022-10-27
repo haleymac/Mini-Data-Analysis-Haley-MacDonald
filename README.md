@@ -1,10 +1,12 @@
 # Mini-Data-Analysis-Haley-MacDonald
-Repository for Haley MacDonald's Mini Data Analysis 
+This is the repository for Haley MacDonald's Mini Data Analysis 
 
 
-Files included in this repository:
+The folders and files in this repository contain the edited Rmd files provided to us by the STAT545 class for milestones 1 and 2, as well as their knitted md counterparts. There is also output from the code used in these analysis. 
 
-mini-data-analysis.Rmd: this file was provided by the STAT545 instructors as a template for our mini-data analysis. I have updated it with R code and comments that fulfill all of the tasks laid out in the original document. I formatted the document with R markdown formatting so it would appear in a way that makes sense when knitted into an html file
+To engage with mini data analysis milestone 1:
+  Enter the mini-project-1_files folder and find the mini-project-1 .Rmd and .md files. View the .md file to get a properly formatted view of the document with output from the code blocks. Pull the .Rmd file into Rstudio to edit and run the code on your own machine. To view images created by the code for making plots in this project view the figure-gfm folder. 
 
-mini-data-analysis.md: this file was created when the similarly titled .Rmd file (described above) was 'knit' into a github_document
-
+To engage with mini data analysis milestone 2:
+    Same as for milestone 1, but. substituting mini-project-2 in the instructions. 
+    
